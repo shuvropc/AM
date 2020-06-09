@@ -7,6 +7,8 @@ namespace AM.BLL.Users.Core
 {
     public interface IUserService
     {
-        public void Create(UserModel pUser);
+        public void Create(UserInformationModel pUser);
+        public void UpdateProfile(UserInformationModel pUser);
+        public UserInformationModel GetUserProfile();
     }
 }

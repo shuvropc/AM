@@ -10,36 +10,32 @@
 }
 @using (Html.BeginForm("Register", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <div class="container register-form">
+
+    <div class="container register-form col-md-6">
         <div class="form">
             <div class="note">
-                <p>New User Registration</p>
+                <p>User Login</p>
             </div>
 
             <div class="form-content">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <input type="text" required name="UserName" class="form-control" placeholder="Your Name *" value="" />
+                            <input type="email" required name="Email" class="form-control" placeholder="Email *" value="" />
                         </div>
                         <div class="form-group">
                             <input type="text" required name="Password" class="form-control" placeholder="Your Password *" value="" />
                         </div>
                     </div>
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <input type="text" required name="Email" class="form-control" placeholder="Email *" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" required name="ConfirmPassword" class="form-control" placeholder="Confirm Password *" value="" />
-                        </div>
-                    </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <button type="submit" class="btnSubmit">Register</button>
+                        <button type="submit" class="btnSubmit">Login</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="text-dark">Not registered yet? <a class="text-primary text-decoration-none" href="Register">Register</a></p>
                     </div>
                 </div>
             </div>
@@ -48,5 +44,4 @@
 
 }
 
-@Html.Raw(ViewBag.ServerResponseMessage)
 

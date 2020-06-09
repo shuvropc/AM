@@ -6,6 +6,8 @@ namespace AM.DAL.Users.Core
 {
     public interface IUserRepository
     {
-        public void Create(User pUser);
+        public void Create(UserInformation pUser);
+        public void UpdateProfile(UserInformation pUser);
+        public UserInformation GetUserProfileByUserId(long pUserId);
     }
 }

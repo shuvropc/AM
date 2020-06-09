@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AM.BLL.Mapper;
+using AM.BLL.User.Core;
+using AM.BLL.User.Infrastructure;
 using AM.BLL.Users.Core;
 using AM.BLL.Users.Infrastructure;
+using AM.DAL.User.Core;
+using AM.DAL.User.Infrastructure;
 using AM.DAL.Users.Core;
 using AM.DAL.Users.Infrastructure;
 using AutoMapper;
@@ -35,8 +39,15 @@ namespace ArticleManagement
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
+
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IUserRepository, UserRepository>();
+
+            services.AddSingleton<IProfessionService, ProfessionService>();
+            services.AddSingleton<IProfessionRepository, ProfessionRepository>();
+
+            services.AddSingleton<IOrganizationService, OrganizationService>();
+            services.AddSingleton<IOrganizationRepository, OrganizationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

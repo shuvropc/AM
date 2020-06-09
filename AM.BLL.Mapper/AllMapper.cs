@@ -11,7 +11,9 @@ namespace AM.BLL.Mapper
     {
         public AllMapper()
         {
-            CreateMap<User, UserModel>().ReverseMap();
+            CreateMap<UserInformation, UserInformationModel>().ReverseMap();
+            CreateMap<Profession, ProfessionModel>().ReverseMap();
+            CreateMap<Organization, OrganizationModel>().ReverseMap();
         }
     }
 }
