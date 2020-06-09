@@ -39,7 +39,6 @@ namespace ArticleManagement
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IUserRepository, UserRepository>();
 
