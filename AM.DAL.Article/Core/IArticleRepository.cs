@@ -9,8 +9,10 @@ namespace AM.DAL.Articles.Core
     {
         public void SaveArticle(Article pArticle);
         public List<Article> GetArticles();
+        public List<Article> GetAllPendingArticles();
         public List<Article> GetArticlesByAuthor(long pCreatedBy);
         public List<Article> GetAllApprovedArticles();
+        public List<Article> GetAllApprovedArticlesByTitle(string pArticleTitle);
         public Article GetArticle(long pId);
         public void EditArticle(Article article);
         public void VerifyArticle(Article article);

@@ -5,6 +5,7 @@ using AM.DM.User;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 using UserAccessTokenClaim.Core;
 
@@ -23,9 +24,13 @@ namespace AM.BLL.Users.Infrastructure
             _IUserAccessTokenClaims = userAccessTokenClaims;
         }
 
+        public void ChangePassword(string pPassword, string pNewPassword)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Create(UserInformationModel pUser)
         {
-            var loggedUser = _IUserAccessTokenClaims.GetCurrentLoggedUserInfo();
 
             if (pUser.Password != pUser.ConfirmPassword)
             {
@@ -33,9 +38,11 @@ namespace AM.BLL.Users.Infrastructure
             }
 
             var userToSave = _IMapper.Map<UserInformationModel, UserInformation>(pUser);
-            userToSave.Password = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(pUser.Password));
-            userToSave.CreatedBy = loggedUser.Id;
+            userToSave.Password = Convert.ToBase64String(Encoding.Unicode.GetBytes(pUser.Password));
+
+            Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(pUser.Password));
             userToSave.DateCreated = DateTime.Now;
+            userToSave.IsArticleUser = true;
             _IUserRepository.Create(userToSave);
         }
 

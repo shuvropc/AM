@@ -49,6 +49,20 @@ namespace AM.BLL.Articles.Infrastructure
             return articlesModel;
         }
 
+        public List<ArticleModel> GetAllApprovedArticlesByTitle(string pArticleTitle)
+        {
+            var articles = _IArticleRepository.GetAllApprovedArticlesByTitle(pArticleTitle);
+            var articlesModel = _IMapper.Map<List<Article>, List<ArticleModel>>(articles);
+            return articlesModel;
+        }
+
+        public List<ArticleModel> GetAllPendingArticles()
+        {
+            var articles = _IArticleRepository.GetAllPendingArticles();
+            var articlesModel = _IMapper.Map<List<Article>, List<ArticleModel>>(articles);
+            return articlesModel;
+        }
+
         public ArticleModel GetArticle(long pId)
         {
             var articles = _IArticleRepository.GetArticle(pId);

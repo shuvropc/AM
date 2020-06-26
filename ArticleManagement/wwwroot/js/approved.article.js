@@ -5,7 +5,7 @@
         dataSource: {
             transport: {
                 read: {
-                    url: baseurl + "Article/GetAllPendingArticles",
+                    url: baseurl + "Article/GetAllApprovedArticles",
                     dataType: "json",
                     type: "GET"
                 }
@@ -49,7 +49,7 @@
             field: "Id",
             title: 'Action',
             template: "#=fnActionRoleTemplate(Id)#",
-            width: 250
+            width: 220
         }
         ]
     });
@@ -63,9 +63,9 @@ function downloadFIle(par) {
 
 function fnActionRoleTemplate(Id) {
     var vAction = "";
-    vAction += "<div style='margin:0 auto; width:150px'>";
-    vAction += "<a class='btn btn-primary' href='VerifyArticle?pArticleId=" + Id + "'>Verify</a>";
-    vAction += "<a class='btn btn-primary'  style='margin-left:5px' href='Details?pArticleId=" + Id + "'>Details</a>";
+    vAction += "<div style='margin:0 auto; width:220px'>";
+    vAction += "<a class='btn btn-primary' href='VerifyArticle?pArticleId=" + Id + "'>Change Status</a>";
+    vAction += "<a class='btn btn-primary' style='margin-left : 3px' href='Details?pArticleId=" + Id + "'>Details</a>";
     vAction += "</div>";
     return vAction;
 }

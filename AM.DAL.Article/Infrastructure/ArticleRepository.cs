@@ -66,5 +66,32 @@ namespace AM.DAL.Articles.Infrastructure
             var result = context.Article.Where(a => a.IsActive == true && a.IsApproved==true && a.IsRejected==false).ToList();
             return result;
         }
+
+        public List<Article> GetAllPendingArticles()
+        {
+            using AMDBContext context = new AMDBContext();
+            var result = context.Article.Where(s=>s.IsApproved==false).ToList();
+            return result;
+        }
+
+        public List<Article> GetAllApprovedArticlesByTitle(string pArticleTitle)
+        {
+            using AMDBContext context = new AMDBContext();
+            List<Article> articles;
+            if (string.IsNullOrEmpty(pArticleTitle))
+            {
+                articles = context.Article.Where(a => a.IsActive == true && a.IsApproved == true && a.IsRejected == false).ToList();
+            }
+            else
+            {
+                articles = context.Article.Where(a => a.IsActive == true && a.IsApproved == true && a.IsRejected == false && a.ArticleTitle.ToLower().Contains(pArticleTitle.ToLower())).ToList();
+            }
+            return articles;
+        }
+
+        public void ChangePassword(long pUserId, string pPassword)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

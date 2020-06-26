@@ -15,6 +15,8 @@ namespace AM.BLL.Articles.Core
         public void RejectArticle(long pId);
         public List<ArticleModel> GetArticlesByAuthor();
         public List<ArticleModel> GetAllApprovedArticles();
+        public List<ArticleModel> GetAllPendingArticles();
+        public List<ArticleModel> GetAllApprovedArticlesByTitle(string pArticleTitle);
 
     }
 }

@@ -14,5 +14,7 @@ namespace AM.BLL.Users.Core
         public UserInformationModel GetUserForAuth(string pEmail, string pPassword);
         public void CreateProfessionalProfile(ProfessionalProfileModel pProfessionalProfile);
         public ProfessionalProfileModel GetProfessionalProfileByUserId();
+        public void ChangePassword(string pPassword, string pNewPassword);
+
     }
 }

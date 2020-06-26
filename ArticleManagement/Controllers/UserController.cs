@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using AM.BLL.User.Core;
 using AM.BLL.Users.Core;
@@ -59,6 +60,23 @@ namespace ArticleManagement.Controllers
             return View("Login");
         }
 
+        private List<string> GetUserRoles(UserInformationModel user)
+        {
+            List<string> roles = new List<string>();
+
+            if (user.IsSuperAdmin)
+            {
+                roles.Add("SuperAdmin");
+            }
+
+            if (user.IsArticleUser)
+            {
+                roles.Add("ArticleUser");
+            }
+
+            return roles;
+        }
+
         [HttpPost]
         [Route("Account/Login")]
         public IActionResult Login(UserInformationModel model, string returnUrl)
@@ -67,6 +85,7 @@ namespace ArticleManagement.Controllers
             try
             {
                 bool isUservalid = false;
+                model.Password = Convert.ToBase64String(Encoding.Unicode.GetBytes(model.Password));
                 UserInformationModel user = _IUserService.GetUserForAuth(model.Email,model.Password);
 
                 if (user != null)
@@ -81,15 +100,16 @@ namespace ArticleManagement.Controllers
                     string userAccessClaim = JsonConvert.SerializeObject(user).ToString();
 
                     claims.Add(new Claim("userAccessClaim", userAccessClaim));
-  
+
+                    foreach (var role in GetUserRoles(user))
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role, role));
+                    }
+
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
                     var principal = new ClaimsPrincipal(identity);
-
                     var props = new AuthenticationProperties();
-
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props).Wait();
-
                     return RedirectToAction("Index", "Home");
                 }
                 else

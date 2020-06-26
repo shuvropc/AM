@@ -13,14 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\js\user\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AM.BLL.Article\AM.BLL.Article.csproj" />
     <ProjectReference Include="..\AM.BLL.Mapper\AM.BLL.Mapper.csproj" />
     <ProjectReference Include="..\AM.BLL.User\AM.BLL.User.csproj" />
     <ProjectReference Include="..\AM.DM.User\AM.DM.User.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\user\" />
   </ItemGroup>
 
 

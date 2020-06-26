@@ -20,19 +20,35 @@ namespace ArticleManagement.Controllers
         }
 
         [HttpGet]
-        [Route("Article/Index")]
-        public IActionResult Index()
+        public IActionResult PendingArticles()
         {
-            return View("Index");
+            return View("PendingArticle");
         }
 
         [HttpGet]
-        public string GetAllArticles()
+        public string GetAllPendingArticles()
         {
-            var result = _IArticleService.GetArticles();
+            var result = _IArticleService.GetAllPendingArticles();
             var jsonRes = JsonConvert.SerializeObject(result).ToString();
             return jsonRes;
         }
+
+
+        [HttpGet]
+        public IActionResult GetAllApprovedArticle()
+        {
+            return View("ApprovedArticle");
+        }
+
+        [HttpGet]
+        public string GetAllApprovedArticles()
+        {
+            var result = _IArticleService.GetAllApprovedArticles();
+            var jsonRes = JsonConvert.SerializeObject(result).ToString();
+            return jsonRes;
+        }
+
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -116,12 +132,12 @@ namespace ArticleManagement.Controllers
         public IActionResult ConfirmVerifyArticle(long pArticleId)
         {
             _IArticleService.VerifyArticle(pArticleId);
-            return RedirectToAction("Index","Article");
+            return RedirectToAction("PendingArticles", "Article");
         }
         public IActionResult RejectArticle(long pArticleId)
         {
             _IArticleService.RejectArticle(pArticleId);
-            return RedirectToAction("Index", "Article");
+            return RedirectToAction("PendingArticles", "Article");
         }
 
         [HttpGet]
