@@ -15,7 +15,6 @@
     <link href="@Url.Content("~/grid/kendo/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
 
     @RenderSection("Styles", required: false)
-
 </head>
 <body>
     <header>
@@ -27,28 +26,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-
-                        <li class="nav-item">
-                            <a href="../Static/GuideLinesMenuScripts" class="nav-link" aria-haspopup="true" aria-expanded="false">Journal Management</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="../Static/SubmitReview" class="nav-link" aria-haspopup="true" aria-expanded="false">Sumit Review</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../Static/JSDReviewerInstruction" class="nav-link" aria-haspopup="true" aria-expanded="false">JGSC Reviewer Instruction</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="../Static/HomeStatic" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Process<span class="caret"></span></a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown1" style="width: 350px">
-                                <li><a href="../Static/GuideLinesForAcceptedArticles">Guidelines for Accepted Articles</a></li>
-                                <li><a href="../Static/ReplicationFilesandArticleVerificationProcess">Replication Files and Article Verification Process</a></li>
-                                <li><a href="../Static/SectionsoftheManuscript">Sections of the Manuscript</a></li>
-                                <li><a href="../Static/SubmissionProcessforFinalDraft">Submission Process for Final Draft</a></li>
-                                <li><a href="../Static/EditorialBoard">Editorial Board</a></li>
-                            </ul>
-                        </li>
 
                         @{
                             if (User.Identity.IsAuthenticated && User.IsInRole("ArticleUser"))
@@ -78,10 +55,10 @@
 
                         }
                         <li class="float-left">
-                            <form class="form-inline my-2 my-lg-0" action="~/Home/Index" method="get">
-                                <input name="particleTitle" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
+                                <form class="form-inline my-2 my-lg-0" action="~/Home/Index" method="get">
+                                    <input name="particleTitle" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Search</button>
+                                </form>
                         </li>
 
                     </ul>
