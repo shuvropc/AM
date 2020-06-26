@@ -6,12 +6,14 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AM.DAL.Core\AM.DAL.Core.csproj" />
     <ProjectReference Include="..\AM.DAL.User\AM.DAL.User.csproj" />
     <ProjectReference Include="..\AM.DM.User\AM.DM.User.csproj" />
+    <ProjectReference Include="..\Temp\UserAccessTokenClaims.csproj" />
   </ItemGroup>
 
 </Project>

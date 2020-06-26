@@ -6,7 +6,7 @@ namespace AM.DAL.Core.Entities
 {
     public class BaseEntity
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }

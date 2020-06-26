@@ -1,4 +1,5 @@
 ﻿using AM.DAL.Core.Entities;
+using AM.DM.Article;
 using AM.DM.User;
 using AutoMapper;
 using System;
@@ -11,7 +12,11 @@ namespace AM.BLL.Mapper
     {
         public AllMapper()
         {
-            CreateMap<User, UserModel>().ReverseMap();
+            CreateMap<UserInformation, UserInformationModel>().ReverseMap();
+            CreateMap<Profession, ProfessionModel>().ReverseMap();
+            CreateMap<Organization, OrganizationModel>().ReverseMap();
+            CreateMap<ProfessionalProfile, ProfessionalProfileModel>().ReverseMap();
+            CreateMap<Article, ArticleModel>().ReverseMap();
         }
     }
 }

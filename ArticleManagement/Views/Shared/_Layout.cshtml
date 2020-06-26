@@ -10,6 +10,13 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!--CSS and JS for Kendo Grid-->
+    <link href="@Url.Content("~/grid/kendo-ui-2018/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/grid/kendo-ui-2018/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/grid/kendo/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/grid/kendo/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+
     @RenderSection("Styles", required: false)
 <style>
         .navbar-inverse .navbar-nav > li > a {
@@ -66,6 +73,7 @@ body {
     <header>
         <div class="custom-menu">
             <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+<<<<<<< .mine
 
                 @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -92,8 +100,37 @@ body {
                                         <li><a href="../Static/SectionsoftheManuscript">Sections of the Manuscript</a></li>
                                         <li><a href="../Static/SubmissionProcessforFinalDraft">Submission Process for Final Draft</a></li>
                                         <li><a href="../Static/EditorialBoard">Editorial Board</a></li>
+=======
+                <a class="navbar-brand" href="~/Home/Index">Journal Management</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+
+                        @{
+                            if (User.Identity.IsAuthenticated && User.IsInRole("ArticleUser"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Article</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                                        <li class="dropdown-item"><a href="~/Article/Create">Create</a></li>
+                                        <li class="dropdown-item"><a href="~/Article/GetMyArticles">My Articles</a></li>
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
                                     </ul>
                                 </li>
+<<<<<<< .mine
 
                             </ul>
                         </div>
@@ -132,17 +169,95 @@ body {
 
                     </div>
                     </div>
+=======
+                            }
+
+                        }
+
+                        @{
+                            if (User.Identity.IsAuthenticated && User.IsInRole("SuperAdmin"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                                        <li class="dropdown-item"><a href="~/Article/PendingArticles">Pending</a></li>
+                                        <li class="dropdown-item"><a href="~/Article/GetAllApprovedArticle">Approved</a></li>
+                                    </ul>
+                                </li>
+                            }
+
+                        }
+                        <li class="float-left">
+                                <form class="form-inline my-2 my-lg-0" action="~/Home/Index" method="get">
+                                    <input name="particleTitle" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Search</button>
+                                </form>
+                        </li>
+
+                    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
+
+
                     <form class="form-inline mt-2 mt-md-0">
+<<<<<<< .mine
                         @*<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Login</button>*@
+
+
+
+
+
+
+
+
+
+
+
+=======
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="~/User/CreateProfessionalProfile" class="btn btn-outline-info my-2 my-sm-0">Professional Profile</a>
+                                <a href="~/User/Profile" class="btn btn-outline-info my-2 my-sm-0">Profile</a>
+                                <a href="~/User/Logout" class="btn btn-outline-info my-2 my-sm-0">LogOut</a>
+                            }
+                            else
+                            {
+                                <a href="~/Account/Login" class="btn btn-outline-info my-2 my-sm-0">Login</a>
+                            }
+
+                        }
+
+>>>>>>> .theirs
                     </form>
                 </div>
                                     </div>
 
+<<<<<<< .mine
                                 </div>
 </header>    
     <div class="container">
+
+=======
+        </div>
+    </header>
+
+    <div class="container">
+>>>>>>> .theirs
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -157,6 +272,14 @@ body {
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/menu.js"></script>
+
+    <script src="@Url.Content("~/grid/kendo/kendo/jszip.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/grid/kendo-ui-2018/kendo.all.min.js")" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+        var baseurl = "https://localhost:44336/";
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

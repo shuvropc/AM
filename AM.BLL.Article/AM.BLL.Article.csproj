@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AM.DAL.Article\AM.DAL.Article.csproj" />
+    <ProjectReference Include="..\AM.DM.Article\AM.DM.Article.csproj" />
+    <ProjectReference Include="..\Temp\UserAccessTokenClaims.csproj" />
+  </ItemGroup>
+
+</Project>
