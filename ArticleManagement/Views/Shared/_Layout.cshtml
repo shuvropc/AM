@@ -4,81 +4,145 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ArticleManagement</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/menu.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    @*<link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/menu.css" rel="stylesheet" />*@
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     @RenderSection("Styles", required: false)
+<style>
+        .navbar-inverse .navbar-nav > li > a {
+            color: #9d9d9d;
+        }
+        body {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #3AB;
+            background-color: #fff;
+        }
+        .navbar-inverse {
+            background-color: #217;
+            border-color: #080808;
+        }
+        
+@*@media (min-width: 768px)*@
+.body {
+    width: 860px;
+}
+    .body {
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #3AB;
+    background-color: #fff;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+</style>
 </head>
-<body>
+<body class="body">
     <header>
         <div class="custom-menu">
             <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
-                <a class="navbar-brand" href="#">Journal Management</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Journal</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                                <li class="dropdown-item" href="#"><a>January 2020</a></li>
-                                <li class="dropdown-item" href="#"><a>February 2020</a></li>
-                                <li class="dropdown-item dropdown">
-                                    <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Archive</a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                                        <li class="dropdown-item" href="#"><a>January 2019</a></li>
-                                        <li class="dropdown-item" href="#"><a>February 2019</a></li>
+
+                @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>*@
+
+
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+
+                        <div>
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="../Home/Index">Home</a></li>
+                                <li><a href="#">Journal Management</a></li>
+                                <li><a href="../Static/GuideLinesMenuScripts">Journal Management</a></li>
+
+                                <li><a href="../Static/SubmitReview">Sumit Review</a></li>
+                                <li><a href="../Static/JSDReviewerInstruction">JGSC Reviewer Instruction</a></li>
+
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="../Static/HomeStatic">Process<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../Static/GuideLinesForAcceptedArticles">Guidelines for Accepted Articles</a></li>
+                                        <li><a href="../Static/ReplicationFilesandArticleVerificationProcess">Replication Files and Article Verification Process</a></li>
+                                        <li><a href="../Static/SectionsoftheManuscript">Sections of the Manuscript</a></li>
+                                        <li><a href="../Static/SubmissionProcessforFinalDraft">Submission Process for Final Draft</a></li>
+                                        <li><a href="../Static/EditorialBoard">Editorial Board</a></li>
                                     </ul>
                                 </li>
+
                             </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown2">
-                                <li class="dropdown-item" href="#"><a>Action 2 A</a></li>
-                                <li class="dropdown-item" href="#"><a>Action 2 B</a></li>
-                                <li class="dropdown-item" href="#"><a>Action 2 C</a></li>
-                                <li class="dropdown-item dropdown">
-                                    <a class="dropdown-toggle" id="dropdown2-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1</a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdown2-1">
-                                        <li class="dropdown-item" href="#"><a>Action 2.1 A</a></li>
-                                        <li class="dropdown-item" href="#"><a>Action 2.1 B</a></li>
-                                        <li class="dropdown-item" href="#"><a>Action 2.1 C</a></li>
-                                        <li class="dropdown-item dropdown">
-                                            <a class="dropdown-toggle" id="dropdown2-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.1</a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdown2-1-1">
-                                                <li class="dropdown-item" href="#"><a>Action 2.1.1 A</a></li>
-                                                <li class="dropdown-item" href="#"><a>Action 2.1.1 B</a></li>
-                                                <li class="dropdown-item" href="#"><a>Action 2.1.1 C</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown-item dropdown">
-                                            <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
-                                                <li class="dropdown-item" href="#"><a>Action 2.1.2 A</a></li>
-                                                <li class="dropdown-item" href="#"><a>Action 2.1.2 B</a></li>
-                                                <li class="dropdown-item" href="#"><a>Action 2.1.2 C</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <div id="inner">
+                    <div class="wrap">
+                        <div id="content-sidebar-wrap">
+                            <div id="content" class="hfeed">
+                                <div class="post-1165 page type-page status-publish has-post-thumbnail hentry entry">
+                                    <div class="entry-content">
+                                        <img src="" />
+
+                                        <h4>
+
+                                            <img data-attachment-id="1201" src="~/Images/LogoInside.png" />
+
+                                            <img data-attachment-id="1201" data-permalink="https://ajps.org/ajps-home/ajps16_cover_small/" data-orig-file="https://i2.wp.com/ajps.org/wp-content/uploads/2015/12/ajps16_cover_small.jpg?fit=344%2C442&amp;ssl=1" data-orig-size="344,442" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="AJPS16_Cover_Small" data-image-description="" data-medium-file="https://i2.wp.com/ajps.org/wp-content/uploads/2015/12/ajps16_cover_small.jpg?fit=233%2C300&amp;ssl=1" data-large-file="https://i2.wp.com/ajps.org/wp-content/uploads/2015/12/ajps16_cover_small.jpg?fit=344%2C442&amp;ssl=1" class=" wp-image-1201 alignright" src="~/Images/LogoInside.png9&#038;ssl=1" alt="American Journal of Political Science" width="155" height="199" data-recalc-dims="1" /></noscript>
+                                        </h4>
+                                        <p><strong>View Current Issue</strong></p>
+                                        <p><a href="https://onlinelibrary.wiley.com/toc/15405907/current">AJPS 64: 2 &#8211; April 2020</a></p>
+                                        <p><strong>Blogs:</strong></p>
+                                        <p><a href="http://ajps.org/category/author-summaries-of-ajps-articles">Author Summaries</a></p>
+                                        <p><a href="http://ajps.org/category/ajps-editor-blog/">Editor&#8217;s Blog</a></p>
+                                        <hr />
+                                        <div>
+                                            <p>********************</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
                     <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Login</button>
+                        @*<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Login</button>*@
                     </form>
                 </div>
-            </div>
+                                    </div>
 
-        </div>
-    </header>    <div class="container">
+                                </div>
+</header>    
+    <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
