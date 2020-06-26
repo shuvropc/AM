@@ -1,14 +1,14 @@
 ﻿@model AM.DM.User.UserInformationModel
 
 @{
-    ViewData["Title"] = "registration";
+    ViewData["Title"] = "User Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section Styles {
     <link href="~/css/user/registration.css" rel="stylesheet" />
 }
-@using (Html.BeginForm("Register", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
     <div class="container register-form col-md-6">
@@ -28,6 +28,14 @@
                         </div>
                     </div>
                 </div>
+
+
+            <div class="row">
+                <div class="col-md-12 text-center text-danger">
+                    <label> @Html.Raw(TempData["SeverResponse"])</label>
+                </div>
+            </div>
+
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <button type="submit" class="btnSubmit">Login</button>
@@ -35,7 +43,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p class="text-dark">Not registered yet? <a class="text-primary text-decoration-none" href="Register">Register</a></p>
+                        <p class="text-dark">Not registered yet? <a class="text-primary text-decoration-none" href="~/User/Register">Register</a></p>
                     </div>
                 </div>
             </div>
@@ -43,5 +51,6 @@
     </div>
 
 }
+
 
 

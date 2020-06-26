@@ -30,6 +30,8 @@ namespace AM.DAL.Core
         public DbSet<UserInformation> UserInformation { get; set; }
         public DbSet<Profession> Profession { get; set; }
         public DbSet<Organization> Organization { get; set; }
+        public DbSet<ProfessionalProfile> ProfessionalProfile { get; set; }
+        public DbSet<Article> Article { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

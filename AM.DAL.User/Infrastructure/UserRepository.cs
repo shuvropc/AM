@@ -32,5 +32,33 @@ namespace AM.DAL.Users.Infrastructure
             var userProfile = aMDBContext.UserInformation.FirstOrDefault(u => u.Id == pUserId);
             return userProfile;
         }
+
+        public void CreateProfessionalProfile(ProfessionalProfile pProfessionalProfile)
+        {
+            using AMDBContext aMDBContext = new AMDBContext();
+            aMDBContext.ProfessionalProfile.Add(pProfessionalProfile);
+            aMDBContext.SaveChanges();
+        }
+
+        public ProfessionalProfile GetProfessionalProfileByUserId(long pUserId)
+        {
+            using AMDBContext aMDBContext = new AMDBContext();
+            var userProfile = aMDBContext.ProfessionalProfile.FirstOrDefault(u => u.UserId == pUserId);
+            return userProfile;
+        }
+
+        public UserInformation GetUserProfile(string Email)
+        {
+            using AMDBContext aMDBContext = new AMDBContext();
+            var result = aMDBContext.UserInformation.FirstOrDefault(x => x.Email == Email);
+            return result;
+        }
+
+        public UserInformation GetUserForAuth(string pEmail, string pPassword)
+        {
+            using AMDBContext aMDBContext = new AMDBContext();
+            var result = aMDBContext.UserInformation.FirstOrDefault(x => x.Email == pEmail && x.Password==pPassword);
+            return result;
+        }
     }
 }

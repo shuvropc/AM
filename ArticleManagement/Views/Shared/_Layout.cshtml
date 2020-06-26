@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/menu.css" rel="stylesheet" />
+
+    <!--CSS and JS for Kendo Grid-->
+    <link href="@Url.Content("~/grid/kendo-ui-2018/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/grid/kendo-ui-2018/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/grid/kendo/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/grid/kendo/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -21,6 +28,13 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Article</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                                <li class="dropdown-item"><a href="~/Article/Create">Create</a></li>
+                                <li class="dropdown-item"><a href="~/Article/GetMyArticles">My Articles</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Journal</a>
@@ -70,14 +84,27 @@
                         </li>
                     </ul>
                     <form class="form-inline mt-2 mt-md-0">
-                        <a href="User/Profile" class="btn btn-outline-info my-2 my-sm-0">Profile</a>
-                        <a href="User/Login" class="btn btn-outline-info my-2 my-sm-0">Login</a>
+                        @{
+                            //if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="~/User/CreateProfessionalProfile" class="btn btn-outline-info my-2 my-sm-0">Professional Profile</a>
+                                <a href="~/User/Profile" class="btn btn-outline-info my-2 my-sm-0">Profile</a>
+                                <a href="~/User/Logout" class="btn btn-outline-info my-2 my-sm-0">LogOut</a>
+                            }
+                            else
+                            {
+                                <a href="~/Account/Login" class="btn btn-outline-info my-2 my-sm-0">Login</a>
+                            }
+
+                        }
+
                     </form>
                 </div>
             </div>
 
         </div>
-    </header>    
+    </header>
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -94,6 +121,14 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/menu.js"></script>
+
+    <script src="@Url.Content("~/grid/kendo/kendo/jszip.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/grid/kendo-ui-2018/kendo.all.min.js")" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+        var baseurl = "https://localhost:44336/";
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
