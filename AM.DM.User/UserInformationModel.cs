@@ -17,5 +17,7 @@ namespace AM.DM.User
         public string Profession { get; set; }
         public string Country { get; set; }
         public string MobileNumber { get; set; }
+        public string PassChangeVerifyCode { get; set; }
+
     }
 }

@@ -17,5 +17,6 @@ namespace AM.DAL.Core.Entities
         public string Profession { get; set; }
         public string Country { get; set; }
         public string MobileNumber { get; set; }
+        public string PassChangeVerifyCode { get; set; }
     }
 }

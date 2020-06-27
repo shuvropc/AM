@@ -12,9 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\AM.BLL.Common\AM.BLL.Common.csproj" />
   </ItemGroup>
 
 </Project>

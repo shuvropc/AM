@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AM.BLL.Common.Core;
 using AM.DAL.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,13 +14,15 @@ namespace AM.DAL.Core
     public class AMDBContext : DbContext
     {
         private readonly IConfiguration _configuration;
+        private readonly IGlobalConfigurationService _IGlobalConfigurationService;
+
         public AMDBContext()
         {
-
         }
-        public AMDBContext(IConfiguration configuration)
+        public AMDBContext(IConfiguration configuration, IGlobalConfigurationService globalConfigurationService)
         {
             _configuration = configuration;
+            _IGlobalConfigurationService = globalConfigurationService;
         }
 
         public AMDBContext(DbContextOptions<AMDBContext> options)
@@ -37,8 +40,7 @@ namespace AM.DAL.Core
         {
             if (!optionsBuilder.IsConfigured)
             {
-                IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DBConnection"));
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-SK1NQNR\\SQLEXPRESS;Initial Catalog=ArticleManager;Integrated Security=True;");
             }
         }
 

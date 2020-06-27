@@ -180,5 +180,75 @@ namespace ArticleManagement.Controllers
             HttpContext.SignOutAsync( CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
         }
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View("ChangePassword");
+        }
+        [HttpPost]
+        public IActionResult ChangePassword(string OldPassword, string NewPassword)
+        {
+            string serverResponse = string.Empty;
+            try
+            {
+                _IUserService.ChangePassword(OldPassword, NewPassword);
+                serverResponse = "<p class='alert alert-success'>Password Changed Successfully!</p>";
+            }
+            catch (Exception ex)
+            {
+                serverResponse = "<p class='alert alert-danger'>" + ((ex.InnerException != null) ? ex.GetBaseException().Message : ex.Message) + "!</p>";
+            }
+            TempData["SeverResponse"] = serverResponse;
+
+            return View("ChangePassword");
+        }
+        [HttpGet]
+        public IActionResult ForgetPassword()
+        {
+            return View("ForgetPassword");
+        }
+        [HttpPost]
+        public IActionResult ForgetPassword(string Email)
+        {
+            string serverResponse = string.Empty;
+            try
+            {
+                _IUserService.SendResetPasswordCode(Email);
+                TempData["UserEmail"] = Email;
+                return RedirectToAction("ResetPassword", "User");
+            }
+            catch (Exception ex)
+            {
+                serverResponse = "<p class='alert alert-danger'>" + ((ex.InnerException != null) ? ex.GetBaseException().Message : ex.Message) + "!</p>";
+            }
+            TempData["SeverResponse"] = serverResponse;
+
+            return View("ForgetPassword");
+        }
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            return View("ResetPassword");
+        }
+        [HttpPost]
+        public IActionResult ResetPassword(string VerificationCode, string NewPassword)
+        {
+            string serverResponse = string.Empty;
+            try
+            {
+                string UserEmail = TempData["UserEmail"].ToString();
+
+                _IUserService.ResetPassword(UserEmail, VerificationCode, NewPassword);
+                serverResponse = "<p class='alert alert-success'>Password Reset Successfully!</p>";
+            }
+            catch (Exception ex)
+            {
+                serverResponse = "<p class='alert alert-danger'>" + ((ex.InnerException != null) ? ex.GetBaseException().Message : ex.Message) + "!</p>";
+            }
+            TempData["SeverResponse"] = serverResponse;
+
+            return View("ResetPassword");
+        }
+
     }
 }
