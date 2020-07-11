@@ -29,24 +29,24 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item">
-                            <a href="../Static/GuideLinesMenuScripts" class="nav-link" aria-haspopup="true" aria-expanded="false">Journal Management</a>
+                            <a href="~/Static/GuideLinesMenuScripts" class="nav-link" aria-haspopup="true" aria-expanded="false">Journal Management</a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="../Static/SubmitReview" class="nav-link" aria-haspopup="true" aria-expanded="false">Sumit Review</a>
+                            <a href="~/Static/SubmitReview" class="nav-link" aria-haspopup="true" aria-expanded="false">Sumit Review</a>
                         </li>
                         <li class="nav-item">
-                            <a href="../Static/JSDReviewerInstruction" class="nav-link" aria-haspopup="true" aria-expanded="false">JGSC Reviewer Instruction</a>
+                            <a href="~/Static/JSDReviewerInstruction" class="nav-link" aria-haspopup="true" aria-expanded="false">JGSC Reviewer Instruction</a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="../Static/HomeStatic" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Process<span class="caret"></span></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown1" style="width: 350px">
-                                <li><a href="../Static/GuideLinesForAcceptedArticles">Guidelines for Accepted Articles</a></li>
-                                <li><a href="../Static/ReplicationFilesandArticleVerificationProcess">Replication Files and Article Verification Process</a></li>
-                                <li><a href="../Static/SectionsoftheManuscript">Sections of the Manuscript</a></li>
-                                <li><a href="../Static/SubmissionProcessforFinalDraft">Submission Process for Final Draft</a></li>
-                                <li><a href="../Static/EditorialBoard">Editorial Board</a></li>
+                                <li><a href="~/Static/GuideLinesForAcceptedArticles">Guidelines for Accepted Articles</a></li>
+                                <li><a href="~/Static/ReplicationFilesandArticleVerificationProcess">Replication Files and Article Verification Process</a></li>
+                                <li><a href="~/Static/SectionsoftheManuscript">Sections of the Manuscript</a></li>
+                                <li><a href="~/Static/SubmissionProcessforFinalDraft">Submission Process for Final Draft</a></li>
+                                <li><a href="~/Static/EditorialBoard">Editorial Board</a></li>
                             </ul>
                         </li>
 
@@ -130,7 +130,8 @@
     <script src="@Url.Content("~/grid/kendo-ui-2018/kendo.all.min.js")" type="text/javascript" charset="utf-8"></script>
 
     <script>
-        var baseurl = "https://localhost:44336/";
+        var baseurl = "http://27.147.182.123/ArticleManagement/";
+         //var baseurl = "https://localhost:44336/";
     </script>
 
     @RenderSection("Scripts", required: false)
