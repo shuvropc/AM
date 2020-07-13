@@ -73,13 +73,12 @@ body {
     <header>
         <div class="custom-menu">
             <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
-<<<<<<< .mine
-
-                @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>*@
-
-
+                <a class="navbar-brand" href="~/Home/Index">Journal Management</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
                 <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
 
@@ -100,34 +99,6 @@ body {
                                         <li><a href="../Static/SectionsoftheManuscript">Sections of the Manuscript</a></li>
                                         <li><a href="../Static/SubmissionProcessforFinalDraft">Submission Process for Final Draft</a></li>
                                         <li><a href="../Static/EditorialBoard">Editorial Board</a></li>
-=======
-                <a class="navbar-brand" href="~/Home/Index">Journal Management</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-
-                        @{
-                            if (User.Identity.IsAuthenticated && User.IsInRole("ArticleUser"))
-                            {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Article</a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                                        <li class="dropdown-item"><a href="~/Article/Create">Create</a></li>
-                                        <li class="dropdown-item"><a href="~/Article/GetMyArticles">My Articles</a></li>
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
                                     </ul>
                                 </li>
 <<<<<<< .mine
@@ -169,7 +140,7 @@ body {
 
                     </div>
                     </div>
-=======
+
                             }
 
                         }
