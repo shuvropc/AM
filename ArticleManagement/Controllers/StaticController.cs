@@ -45,4 +45,8 @@ namespace ArticleManagement.Controllers
             return View();
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f0fff7f629e221cdb2442c84f894ab4be7b99876
 }

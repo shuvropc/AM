@@ -1,4 +1,6 @@
-﻿using AM.BLL.Users.Core;
+﻿using AM.BLL.Common;
+using AM.BLL.Common.Core;
+using AM.BLL.Users.Core;
 using AM.DAL.Core.Entities;
 using AM.DAL.Users.Core;
 using AM.DM.User;
@@ -16,17 +18,31 @@ namespace AM.BLL.Users.Infrastructure
         private readonly IMapper _IMapper;
         private readonly IUserRepository _IUserRepository;
         private readonly IUserAccessTokenClaimsService _IUserAccessTokenClaims;
+        private readonly IEmailHandlerService _IEmailHandlerService;
 
-        public UserService(IMapper mapper, IUserRepository userRepository, IUserAccessTokenClaimsService userAccessTokenClaims)
+        public UserService(IMapper mapper, IUserRepository userRepository, IUserAccessTokenClaimsService userAccessTokenClaims, IEmailHandlerService emailHandlerService)
         {
             _IMapper = mapper;
             _IUserRepository = userRepository;
             _IUserAccessTokenClaims = userAccessTokenClaims;
+            _IEmailHandlerService = emailHandlerService;
         }
 
         public void ChangePassword(string pPassword, string pNewPassword)
         {
-            throw new NotImplementedException();
+            var loggedUser = _IUserAccessTokenClaims.GetCurrentLoggedUserInfo();
+            string curPass = Convert.ToBase64String(Encoding.Unicode.GetBytes(pPassword));
+            if(curPass == loggedUser.Password)
+            {
+                var userProfile = _IUserRepository.GetUserProfileByUserId(1);
+                userProfile.Password= Convert.ToBase64String(Encoding.Unicode.GetBytes(pNewPassword));
+                userProfile.DateModified = DateTime.Now;
+                _IUserRepository.UpdateProfile(userProfile);
+            }
+            else
+            {
+                throw new Exception("Current password doesn't match");
+            }
         }
 
         public void Create(UserInformationModel pUser)
@@ -85,6 +101,42 @@ namespace AM.BLL.Users.Infrastructure
             var userProfile = _IUserRepository.GetUserProfile(Email);
             var userProfileModel = _IMapper.Map<UserInformation, UserInformationModel>(userProfile);
             return userProfileModel;
+        }
+
+        public void ResetPassword(string Email, string VerificationCode, string NewPassword)
+        {
+            var userProfile = _IUserRepository.GetUserProfile(Email);
+            if (userProfile.PassChangeVerifyCode == VerificationCode && !string.IsNullOrEmpty(VerificationCode))
+            {
+                userProfile.Password = Convert.ToBase64String(Encoding.Unicode.GetBytes(NewPassword));
+                userProfile.PassChangeVerifyCode = null;
+                _IUserRepository.UpdateProfile(userProfile);
+            }
+            else
+            {
+                throw new Exception("Verification Code doesn't match");
+            }
+        }
+
+        public void SendResetPasswordCode(string pEmail)
+        {
+
+            var userProfile = _IUserRepository.GetUserProfile(pEmail);
+            if (userProfile != null)
+            {
+                String verificationCode = (new Random()).Next(0, 999999).ToString("D6");
+                string toEmail = pEmail;
+                string subject = "Password Reset Code";
+                string body = "Your password reset code is "+ verificationCode;
+                _IEmailHandlerService.SendEmail(toEmail, subject, body);
+
+                userProfile.PassChangeVerifyCode = verificationCode;
+                _IUserRepository.UpdateProfile(userProfile);
+            }
+            else
+            {
+                throw new Exception("Email Not found!");
+            }
         }
 
         public void UpdateProfile(UserInformationModel pUser)
