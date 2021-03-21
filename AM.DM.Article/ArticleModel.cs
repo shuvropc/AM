@@ -4,6 +4,7 @@ namespace AM.DM.Article
 {
     public class ArticleModel
     {
+        //https://www.google.com/
         public long Id { get; set; }
         public string FileName { get; set; }
         public byte[] File { get; set; }
