@@ -6,7 +6,7 @@ namespace AM.BLL.Common.Core
 {
     public interface IEmailHandlerService
     {
-        //https://github.com/shuvropc/AM/edit/master/AM.BLL.Common/Core/IEmailHandlerService.cs
+        //https://github.com/mauricioaniche/repodriller
         public void SendEmail(string pToEmail, string pSubject, string pBody);
 
     }
