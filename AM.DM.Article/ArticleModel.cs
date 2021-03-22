@@ -1,5 +1,6 @@
 ﻿using System;
 
+//Hello
 namespace AM.DM.Article
 {
     public class ArticleModel
