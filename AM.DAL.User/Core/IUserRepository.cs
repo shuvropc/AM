@@ -6,6 +6,8 @@ namespace AM.DAL.Users.Core
 {
     public interface IUserRepository
     {
+        /* The code below will print the words Hello World https://github.com/shuvropc
+to the screen, and it is amazing https://github.com/shuvropc */
         public void Create(UserInformation pUser);
         public void UpdateProfile(UserInformation pUser);
         public UserInformation GetUserProfile(string Email);
